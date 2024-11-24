@@ -1,7 +1,7 @@
 {
   "name": "touhou-local-scoreboards",
   "displayName": "Touhou Local Scoreboards",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "author": "imo-tikuwa",
   "description": "東方Projectの原作シューティングゲームのリプレイデータを管理することができるツールです",
   "type": "module",
