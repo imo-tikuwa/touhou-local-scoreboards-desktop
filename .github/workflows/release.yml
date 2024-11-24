@@ -1,0 +1,44 @@
+name: Build and Release Electron App
+
+# タグ作成をトリガーとする
+on:
+  push:
+    tags:
+      - 'v*'
+
+# リリース作成するのでワークフローに書き込み権限をつける
+permissions:
+  contents: write
+
+jobs:
+  build:
+    # Windowsを使用する
+    runs-on: windows-latest
+
+    steps:
+      # ソースコードをチェックアウト
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          token: ${{ secrets.RELEASE_TOKEN }}
+
+      # Node.js のセットアップ
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+
+      # 依存関係のインストール
+      - name: Install Dependencies
+        run: npm install
+
+      # Vite アプリケーションをビルド
+      - name: Build Vite App
+        run: npm run build
+
+      # electron-builder の実行(「アーティファクトのアップロード」「リリース作成」を含む)
+      - name: Build Electron App
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx electron-builder

@@ -1,0 +1,16 @@
+appId: com.imo-tikuwa.app
+
+productName: 'Touhou Local Scoreboards'
+
+files:
+  - 'build/**/*'
+  - 'dist-electron/main.js'
+
+win:
+  target:
+    - nsis
+  icon: 'src/assets/logo.ico'
+
+publish:
+  provider: github
+  releaseType: release
