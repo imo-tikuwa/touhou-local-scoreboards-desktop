@@ -6,3 +6,6 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
+
+// usePlatform コンポーサブル内の chrome の型エラーを抑制するための型宣言
+declare var chrome: any
