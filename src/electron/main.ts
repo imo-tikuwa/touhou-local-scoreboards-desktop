@@ -1,5 +1,10 @@
 import { app, BrowserWindow, Menu } from 'electron'
 import path from 'path'
+import { fileURLToPath } from 'url'
+import { registerIpcHandlers } from './ipcHandlers'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -8,6 +13,8 @@ function createWindow() {
     icon: 'src/assets/logo.ico',
     webPreferences: {
       nodeIntegration: false,
+      contextIsolation: true,
+      preload: path.join(__dirname, 'preload.mjs'),
     },
   })
 
@@ -19,6 +26,8 @@ function createWindow() {
   } else {
     win.loadFile(path.join(app.getAppPath(), 'build', 'index.html'))
   }
+
+  registerIpcHandlers(win)
 }
 
 app

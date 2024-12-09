@@ -5,7 +5,7 @@ import Components from 'unplugin-vue-components/vite'
 import VueRouter from 'unplugin-vue-router/vite'
 import { PrimeVueResolver } from '@primevue/auto-import-resolver'
 import { nodePolyfills } from 'vite-plugin-node-polyfills'
-import electron from 'vite-plugin-electron'
+import electron from 'vite-plugin-electron/simple'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -67,7 +67,12 @@ export default defineConfig(({ mode }) => {
       nodePolyfills(),
 
       electron({
-        entry: 'src/electron/main.ts',
+        main: {
+          entry: 'src/electron/main.ts',
+        },
+        preload: {
+          input: 'src/electron/preload.ts',
+        },
       }),
     ],
   }

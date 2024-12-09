@@ -5,6 +5,7 @@ productName: 'Touhou Local Scoreboards'
 files:
   - 'build/**/*'
   - 'dist-electron/main.js'
+  - 'dist-electron/preload.mjs'
 
 win:
   target:
