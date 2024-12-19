@@ -9,18 +9,3 @@ declare module '*.vue' {
 
 // usePlatform コンポーサブル内の chrome の型エラーを抑制するための型宣言
 declare var chrome: any
-
-declare global {
-  interface Window {
-    api: {
-      selectReplayDirectory: () => Promise<string | null>
-      readDirectoryFiles: (folderSyncSetting: FolderSyncSetting) => Promise<[string[], number]>
-      readReplayFile: (
-        folderSyncSetting: FolderSyncSetting,
-        replayFilePath: string,
-      ) => Promise<[Buffer, string, number] | null>
-    }
-  }
-}
-
-export {}
