@@ -1,7 +1,7 @@
 {
   "name": "touhou-local-scoreboards",
   "displayName": "Touhou Local Scoreboards",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "author": "imo-tikuwa",
   "description": "東方Projectの原作シューティングゲームのリプレイデータを管理することができるツールです",
   "type": "module",
@@ -48,7 +48,7 @@
     "vite-plugin-electron": "^0.29.0",
     "vite-plugin-node-polyfills": "^0.22.0",
     "vue": "^3.5.12",
-    "vue-i18n": "^10.0.4",
+    "vue-i18n": "^10.0.5",
     "vue-router": "^4.4.5",
     "vue-tsc": "^2.1.6"
   }
